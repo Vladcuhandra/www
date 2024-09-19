@@ -1,17 +1,31 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import React from "react";
+import * as ReactDOMClieant from "react-dom/client";
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
+// ReactDOM. render (React, createElement (' input', {
+//placeholder: "Help text",
+//onClick: () => console. log("Clicked"),
+//onMouseEnter: () => console. log("Mouse Over"),
+// }), document.getElementfyId("app"))
+
+const inputClick = () => console.log("Clicked"); //function inputClick, "Clicked" appears when событие onClick will be triggered.
+const mouseOver = () => console.log("Mouse Over"); //function mouseOver, "Mouse Over" appears when событие onMouseEnter will be triggered.
+
+const helpText = "Help text";
+
+const elements = (
+  <div className="name">
+    <h1>{helpText}</h1>
+
+    <input
+      placeholder={helpText} // place where will be text
+      onClick={inputClick} //событие onClick, потом вызываем функцию inputClick
+      onMouseEnter={mouseOver} //событие onMouseEnter, потом вызываем функцию mouseOver
+    />
+
+    <p>{helpText === "Help text!" ? "Yes" : "No"}</p>
+  </div>
 );
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+const app = ReactDOMClieant.createRoot(document.getElementById("app"));
+
+app.render(elements);
